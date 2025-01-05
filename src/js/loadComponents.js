@@ -16,9 +16,11 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     // Get the base path for GitHub Pages
-    const basePath = location.hostname === 'localhost' || location.hostname === '127.0.0.1'
-        ? ''  // Use empty base path for local development
-        : '/Ataraxiz.com'; // Adjust this to match your repository name
+    const basePath = location.hostname === 'localhost' || 
+                     location.hostname === '127.0.0.1' || 
+                     location.hostname === 'ataraxiz.com'
+        ? ''  // Use empty base path for local development and custom domain
+        : '/Ataraxiz.com'; // Use base path for GitHub Pages' default domain
 
     // Calculate relative path to root based on current page
     const pathToRoot = location.pathname
