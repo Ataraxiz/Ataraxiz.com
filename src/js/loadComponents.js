@@ -7,7 +7,6 @@
             visibility: hidden;
         }
     `;
-    // Force this style to be the first in head
     if (document.head.firstChild) {
         document.head.insertBefore(criticalStyles, document.head.firstChild);
     } else {
@@ -16,70 +15,69 @@
 })();
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Create a promise for each fetch operation
-    const headerPromise = fetch('/src/components/header.html').then(response => response.text());
-    const navPromise = fetch('/src/components/nav.html').then(response => response.text());
-    const footerPromise = fetch('/src/components/footer.html').then(response => response.text());
+    // Get the base path for GitHub Pages
+    const basePath = location.hostname === 'localhost' || location.hostname === '127.0.0.1'
+        ? ''  // Use empty base path for local development
+        : '/Ataraxiz.com'; // Adjust this to match your repository name
 
-    // Add a promise to wait for CSS to load
+    // Update fetch paths with base path
+    const headerPromise = fetch(`${basePath}/src/components/header.html`).then(response => response.text());
+    const navPromise = fetch(`${basePath}/src/components/nav.html`).then(response => response.text());
+    const footerPromise = fetch(`${basePath}/src/components/footer.html`).then(response => response.text());
+
+    // Add CSS loading promise
     const cssPromise = new Promise((resolve) => {
         const styleSheets = Array.from(document.styleSheets);
         if (styleSheets.some(sheet => sheet.href && sheet.href.includes('output.css'))) {
             resolve();
         } else {
-            const link = document.querySelector('link[href="/output.css"]');
+            const link = document.querySelector(`link[href$="output.css"]`);
             if (link) {
                 link.addEventListener('load', resolve);
             } else {
-                resolve(); // Resolve anyway if we can't find the stylesheet
+                resolve();
             }
         }
     });
 
-    // Wait for all components AND CSS to load before showing anything
     Promise.all([headerPromise, navPromise, footerPromise, cssPromise])
         .then(([headerData, navData, footerData]) => {
-            // Replace the content of head except for the title and critical styles
+            // Update paths in the header content
+            headerData = headerData.replace(/href="(?!http|#|mailto)/g, `href="${basePath}/`);
+            
             const head = document.head;
             const title = document.title;
             const criticalStyles = head.querySelector('style');
             head.innerHTML = headerData + `<title>${title}</title>`;
-            // Re-add our critical styles
             head.insertBefore(criticalStyles, head.firstChild);
 
+            // Update paths in the nav content
+            navData = navData.replace(/href="(?!http|#|mailto)/g, `href="${basePath}/`);
+            navData = navData.replace(/src="(?!http|data)/g, `src="${basePath}/`);
             document.getElementById('nav-placeholder').innerHTML = navData;
+
+            // Update paths in the footer content
+            footerData = footerData.replace(/href="(?!http|#|mailto)/g, `href="${basePath}/`);
+            footerData = footerData.replace(/src="(?!http|data)/g, `src="${basePath}/`);
             document.getElementById('footer-placeholder').innerHTML = footerData;
-            
-            // Highlight current page in navigation
-            const currentPath = window.location.pathname;
+
+            // Navigation highlighting
+            const currentPath = window.location.pathname.replace(basePath, '');
             const navLinks = document.querySelectorAll('#nav-placeholder a');
-            
-            console.log('Current path:', currentPath);
             
             navLinks.forEach(link => {
                 const href = link.getAttribute('href');
-                if (!href) return; // Skip if href is null
+                if (!href || href === '#') return;
                 
-                // Skip dropdown toggle links
-                if (href === '#') return;
-                
-                // Normalize paths for comparison
-                const normalizedHref = href.replace('/index.html', '/');
+                const normalizedHref = href.replace(basePath, '').replace('/index.html', '/');
                 const normalizedCurrentPath = currentPath.replace('/index.html', '/');
                 
-                console.log('Comparing:', { normalizedCurrentPath, normalizedHref });
-                
-                // Check if the normalized paths match
                 if (normalizedCurrentPath === normalizedHref || 
-                    (normalizedCurrentPath === '/' && (href === '/index.html' || href === '/'))) {
-                    console.log('Match found! Adding highlight to:', href);
-                    link.style.color = '#006969'; // Explicit color setting
-                    // Alternative approach:
-                    // link.setAttribute('style', 'color: var(--darkCyan) !important');
+                    (normalizedCurrentPath === '/' && (normalizedHref === '/index.html' || normalizedHref === '/'))) {
+                    link.style.color = '#006969';
                 }
             });
 
-            // Show everything at once when ready
             document.body.style.visibility = 'visible';
         })
         .catch(error => {
