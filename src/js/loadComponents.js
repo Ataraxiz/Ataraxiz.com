@@ -34,8 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     Promise.all([headerPromise, navPromise, footerPromise])
         .then(([headerData, navData, footerData]) => {
-            // Update CSS paths in header
+            // Update CSS paths in header with explicit relative path
             headerData = headerData.replace(/href="\/output\.css"/g, `href="${pathToRoot}/output.css"`);
+            headerData = headerData.replace(/href="output\.css"/g, `href="${pathToRoot}/output.css"`);
             
             const head = document.head;
             const title = document.title;
