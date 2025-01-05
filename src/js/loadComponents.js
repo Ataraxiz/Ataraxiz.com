@@ -20,6 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
         ? ''  // Use empty base path for local development
         : '/Ataraxiz.com'; // Adjust this to match your repository name
 
+    // Calculate relative path to root based on current page
+    const pathToRoot = location.pathname
+        .split('/')
+        .slice(basePath ? 2 : 1, -1) // Skip basePath if it exists, and filename
+        .map(() => '..')
+        .join('/') || '.';
+
     // Update fetch paths with base path
     const headerPromise = fetch(`${basePath}/src/components/header.html`).then(response => response.text());
     const navPromise = fetch(`${basePath}/src/components/nav.html`).then(response => response.text());
@@ -27,11 +34,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     Promise.all([headerPromise, navPromise, footerPromise])
         .then(([headerData, navData, footerData]) => {
+            // Update CSS paths in header
+            headerData = headerData.replace(/href="\/output\.css"/g, `href="${pathToRoot}/output.css"`);
+            
             const head = document.head;
             const title = document.title;
             const criticalStyles = head.querySelector('style');
-            
-            // Replace the content but preserve our critical styles
             head.innerHTML = headerData + `<title>${title}</title>`;
             head.insertBefore(criticalStyles, head.firstChild);
 
