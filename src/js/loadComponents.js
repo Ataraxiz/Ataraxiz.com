@@ -25,59 +25,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const navPromise = fetch(`${basePath}/src/components/nav.html`).then(response => response.text());
     const footerPromise = fetch(`${basePath}/src/components/footer.html`).then(response => response.text());
 
-    // Add CSS loading promise
-    const cssPromise = new Promise((resolve) => {
-        const styleSheets = Array.from(document.styleSheets);
-        if (styleSheets.some(sheet => sheet.href && sheet.href.includes('output.css'))) {
-            resolve();
-        } else {
-            const link = document.querySelector(`link[href$="output.css"]`);
-            if (link) {
-                link.addEventListener('load', resolve);
-            } else {
-                resolve();
-            }
-        }
-    });
-
-    Promise.all([headerPromise, navPromise, footerPromise, cssPromise])
+    Promise.all([headerPromise, navPromise, footerPromise])
         .then(([headerData, navData, footerData]) => {
-            // Update paths in the header content
-            headerData = headerData.replace(/href="(?!http|#|mailto)/g, `href="${basePath}/`);
-            
             const head = document.head;
             const title = document.title;
             const criticalStyles = head.querySelector('style');
+            
+            // Replace the content but preserve our critical styles
             head.innerHTML = headerData + `<title>${title}</title>`;
             head.insertBefore(criticalStyles, head.firstChild);
 
-            // Update paths in the nav content
-            navData = navData.replace(/href="(?!http|#|mailto)/g, `href="${basePath}/`);
-            navData = navData.replace(/src="(?!http|data)/g, `src="${basePath}/`);
-            document.getElementById('nav-placeholder').innerHTML = navData;
+            // Update all relative URLs in nav and footer
+            if (basePath) {
+                navData = navData.replace(/src="\//g, `src="${basePath}/`);
+                navData = navData.replace(/href="\//g, `href="${basePath}/`);
+                footerData = footerData.replace(/src="\//g, `src="${basePath}/`);
+                footerData = footerData.replace(/href="\//g, `href="${basePath}/`);
+            }
 
-            // Update paths in the footer content
-            footerData = footerData.replace(/href="(?!http|#|mailto)/g, `href="${basePath}/`);
-            footerData = footerData.replace(/src="(?!http|data)/g, `src="${basePath}/`);
+            document.getElementById('nav-placeholder').innerHTML = navData;
             document.getElementById('footer-placeholder').innerHTML = footerData;
 
-            // Navigation highlighting
-            const currentPath = window.location.pathname.replace(basePath, '');
-            const navLinks = document.querySelectorAll('#nav-placeholder a');
-            
-            navLinks.forEach(link => {
-                const href = link.getAttribute('href');
-                if (!href || href === '#') return;
-                
-                const normalizedHref = href.replace(basePath, '').replace('/index.html', '/');
-                const normalizedCurrentPath = currentPath.replace('/index.html', '/');
-                
-                if (normalizedCurrentPath === normalizedHref || 
-                    (normalizedCurrentPath === '/' && (normalizedHref === '/index.html' || normalizedHref === '/'))) {
-                    link.style.color = '#006969';
-                }
-            });
-
+            // Show the page once everything is loaded
             document.body.style.visibility = 'visible';
         })
         .catch(error => {
