@@ -6,31 +6,31 @@
 <body class="bg-black text-white  flex flex-col min-h-screen">
     <div id="nav-placeholder"></div>
     
-    <main class="flex-grow">
+    <main class="flex-grow flex flex-col">
         <!-- Contact Content -->
-        <section class="h-full p-16">
-            <div class="container mx-auto max-w-2xl">
-                <h2 class="text-4xl mb-8 text-darkCyan">Contact</h2>
-                <form class="space-y-6">
+        <section class="flex-1 flex items-start justify-center overflow-hidden pt-0">
+            <div class="container mx-auto max-w-sm px-4">
+                <h2 class="text-2xl mb-2 text-darkCyan">Contact</h2>
+                <form class="space-y-1">
                     <div>
-                        <label for="name" class="block text-sm font-medium mb-2 text-darkCyan">Name</label>
+                        <label for="name" class="block text-sm font-medium mb-0.5 text-darkCyan">Name</label>
                         <input type="text" id="name" name="name" required
-                            class="w-full p-2 bg-gray-900 border border-darkCyan rounded-sm focus:outline-none focus:ring-2 focus:ring-darkCyan text-gray-300">
+                            class="w-full p-1 bg-gray-900 border border-darkCyan rounded-sm focus:outline-none focus:ring-2 focus:ring-darkCyan text-gray-300">
                     </div>
                     
                     <div>
-                        <label for="email" class="block text-sm font-medium mb-2 text-darkCyan">Email</label>
+                        <label for="email" class="block text-sm font-medium mb-0.5 text-darkCyan">Email</label>
                         <input type="email" id="email" name="email" required
-                            class="w-full p-2 bg-gray-900 border border-darkCyan rounded-sm focus:outline-none focus:ring-2 focus:ring-darkCyan text-gray-300">
+                            class="w-full p-1 bg-gray-900 border border-darkCyan rounded-sm focus:outline-none focus:ring-2 focus:ring-darkCyan text-gray-300">
                     </div>
                     
                     <div>
-                        <label for="message" class="block text-sm font-medium mb-2 text-darkCyan">Message</label>
-                        <textarea id="message" name="message" rows="4" required
-                            class="w-full p-2 bg-gray-900 border border-darkCyan rounded-sm focus:outline-none focus:ring-2 focus:ring-darkCyan text-gray-300"></textarea>
+                        <label for="message" class="block text-sm font-medium mb-0.5 text-darkCyan">Message</label>
+                        <textarea id="message" name="message" rows="2" required
+                            class="w-full p-1 bg-gray-900 border border-darkCyan rounded-sm focus:outline-none focus:ring-2 focus:ring-darkCyan text-gray-300"></textarea>
                     </div>
                     
-                    <div class="flex justify-center">
+                    <div class="flex justify-center pb-4">
                         <button type="submit" 
                             class="py-1 bg-gray-900 text-darkCyan rounded-sm border border-darkCyan hover:bg-gray-800 transition-colors">
                             &nbsp;&nbsp;&nbsp;Send Message&nbsp;&nbsp;&nbsp;

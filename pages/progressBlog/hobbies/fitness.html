@@ -10,83 +10,235 @@
     
     <main class="flex-grow">
         <section class="container mx-auto px-4 py-8">
-            <h1 class="text-4xl font-bold mb-8 text-center">Fitness Journey</h1>
+            <h1 class="text-4xl font-bold mb-8 text-center">Fitness</h1>
+            <p class="text-gray-400 mb-8 text-center max-w-3xl mx-auto">
+                <!-- Remove this paragraph from here -->
+            </p>
             
             <!-- Current Stats Section -->
             <div class="mb-12 border border-darkCyan rounded-sm p-6">
-                <h2 class="text-2xl font-semibold mb-4">Current Stats</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-gray-900/50 p-4 rounded-sm text-center">
-                        <h3 class="text-xl font-semibold mb-2">Weekly Workouts</h3>
-                        <p class="text-3xl text-darkCyan">4</p>
-                        <p class="text-gray-400 text-sm mt-2">sessions/week</p>
+                <h2 class="text-2xl font-semibold mb-4 text-center">Current Stats</h2>
+                <div class="grid grid-cols-4 gap-4">
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold text-darkCyan border-b border-darkCyan pb-2 mb-4">Strength</h3>
+                        <div class="space-y-2 text-sm">
+                            <p>Bench Press: 85kg × 3</p>
+                            <p>Pull Ups: +10kg × 5</p>
+                            <p>Training: 4/week</p>
+                        </div>
                     </div>
-                    <div class="bg-gray-900/50 p-4 rounded-sm text-center">
-                        <h3 class="text-xl font-semibold mb-2">Main Focus</h3>
-                        <p class="text-3xl text-darkCyan">Strength</p>
-                        <p class="text-gray-400 text-sm mt-2">current phase</p>
+                    
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold text-darkCyan border-b border-darkCyan pb-2 mb-4">Conditioning</h3>
+                        <div class="space-y-2 text-sm">
+                            <p>Cooper Test: 2700m</p>
+                            <p>Max Speed: 15kph</p>
+                            <p>Training: 3/week</p>
+                        </div>
                     </div>
-                    <div class="bg-gray-900/50 p-4 rounded-sm text-center">
-                        <h3 class="text-xl font-semibold mb-2">Experience</h3>
-                        <p class="text-3xl text-darkCyan">2 Years</p>
-                        <p class="text-gray-400 text-sm mt-2">consistent training</p>
+                    
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold text-darkCyan border-b border-darkCyan pb-2 mb-4">Mobility</h3>
+                        <div class="space-y-2 text-sm">
+                            <p>Squat: Folded</p>
+                            <p>Pike: 4 blocks</p>
+                            <p>Practice: 20min/day</p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold text-darkCyan border-b border-darkCyan pb-2 mb-4">Weight</h3>
+                        <div class="space-y-2 text-sm">
+                            <p>Current: 87kg</p>
+                            <p>Body Fat: 17%</p>
+                            <p>Maintenance calories: 2800kcal</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Current Program Section -->
             <div class="mb-12 border border-darkCyan rounded-sm p-6">
-                <h2 class="text-2xl font-semibold mb-4">Current Program</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Strength Goals -->
-                    <div class="bg-gray-900/50 p-4 rounded-sm">
-                        <h3 class="text-xl font-semibold mb-2">Strength Goals</h3>
+                <h2 class="text-2xl font-semibold mb-4 text-center">Current Program</h2>
+                
+                <p class="text-gray-400 mb-8 text-center max-w-3xl mx-auto">
+                    Despite prioritizing bug bounty hunting above most other pursuits, fitness remains non-negotiable. A past back injury taught me the profound impact of physical capability on quality of life - maintaining a strong, healthy body is essential to everything else I do.
+                </p>
+
+                <!-- Strength Section -->
+                <div class="bg-gray-900/50 p-4 rounded-sm mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-center">Strength </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-3">
+                            <h4 class="text-lg font-semibold">Goals</h4>
                             <div class="flex justify-between items-center">
                                 <span>Bench Press</span>
-                                <span class="text-darkCyan">100kg → 120kg</span>
+                                <span class="text-darkCyan">85kg x 3 → 100kg x 3</span>
                             </div>
+                            <div class="flex justify-between items-center">
+                                <span>Weighted Pull Ups</span>
+                                <span class="text-darkCyan">10kg x 5 → 20kg x 5</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold">Weekly Split</h4>
+                            <ul class="space-y-2 text-gray-400">
+                                <li>• Day 1: Push</li>
+                                <li>• Day 2: Pull</li>
+                                <li>• Day 3: Push</li>
+                                <li>• Day 4: Pull</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conditioning Section -->
+                <div class="bg-gray-900/50 p-4 rounded-sm mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-center">Conditioning</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-3">
+                            <h4 class="text-lg font-semibold">Goals</h4>
+                            <div class="flex justify-between items-center">
+                                <span>Cooper test</span>
+                                <span class="text-darkCyan">2700m → 3000m</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>Half Marathon</span>
+                                <span class="text-darkCyan"> < 1hr 50mins</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold">Weekly Split</h4>
+                            <ul class="space-y-2 text-gray-400">
+                                <li>• Day 1: 15kph Intervals</li>
+                                <li>• Day 2: Zone 2</li>
+                                <li>• Day 3: 15kph Intervals</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobility Section -->
+                <div class="bg-gray-900/50 p-4 rounded-sm mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-center">Mobility</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-3">
+                            <h4 class="text-lg font-semibold">Goals</h4>
                             <div class="flex justify-between items-center">
                                 <span>Squat</span>
-                                <span class="text-darkCyan">140kg → 160kg</span>
+                                <span class="text-darkCyan">Folded → Heels on Floor, Chest up</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span>Deadlift</span>
-                                <span class="text-darkCyan">180kg → 200kg</span>
+                                <span>Pike Fold</span>
+                                <span class="text-darkCyan">4 yoga blocks → Touch the Floor</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold">Weekly Split</h4>
+                            <ul class="space-y-2 text-gray-400">
+                                <li>• Daily: 20min Routine</li>
+                                <li>• 2x/week: 10min Squat Session</li>
+                                <li>• 2x/week: 10min Forward Fold Session</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weight Goals Section -->
+                <div class="bg-gray-900/50 p-4 rounded-sm">
+                    <h3 class="text-xl font-semibold mb-2 text-center">Weight</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-3">
+                            <h4 class="text-lg font-semibold">Goals</h4>
+                            <div class="flex justify-between items-center">
+                                <span>Current Weight</span>
+                                <span class="text-darkCyan">87kg</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>Target Range</span>
+                                <span class="text-darkCyan">88kg - 90kg</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold">Strategy</h4>
+                            <ul class="space-y-2 text-gray-400">
+                                <li>• Daily Protein: 160g minimum</li>
+                                <li>• Maintenance calories: 2800kcal</li>
+                                <li>• Weekly weigh-ins</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Future Projects Section -->
+            <div class="mb-12 border border-darkCyan rounded-sm p-6">
+                <h2 class="text-2xl font-semibold mb-4">Future Projects</h2>
+                <div class="space-y-4">
+                    <div class="bg-gray-900/50 p-4 rounded-sm">
+                        <h3 class="text-xl font-semibold mb-2">Strength Goals</h3>
+                        <p class="text-gray-400 mb-3">Long-term strength development milestones</p>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span>100kg Bench Press for 5 reps</span>
+                                <span class="text-darkCyan">Planned</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>20kg Weighted Pull-ups for 5 reps</span>
+                                <span class="text-darkCyan">Planned</span>
                             </div>
                         </div>
                     </div>
-                    <!-- Weekly Split -->
+
                     <div class="bg-gray-900/50 p-4 rounded-sm">
-                        <h3 class="text-xl font-semibold mb-2">Weekly Split</h3>
-                        <ul class="space-y-2 text-gray-400">
-                            <li>• Monday: Upper Body Strength</li>
-                            <li>• Tuesday: Lower Body Strength</li>
-                            <li>• Thursday: Upper Body Hypertrophy</li>
-                            <li>• Friday: Lower Body Hypertrophy</li>
-                        </ul>
+                        <h3 class="text-xl font-semibold mb-2">Endurance Goals</h3>
+                        <p class="text-gray-400 mb-3">Building cardiovascular capacity</p>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span>Complete Half Marathon</span>
+                                <span class="text-darkCyan">Planned</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>3000m Cooper Test</span>
+                                <span class="text-darkCyan">Planned</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-900/50 p-4 rounded-sm">
+                        <h3 class="text-xl font-semibold mb-2">Mobility Development</h3>
+                        <p class="text-gray-400 mb-3">Improving flexibility and movement patterns</p>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span>Full Pike Fold</span>
+                                <span class="text-darkCyan">Planned</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>Deep Squat with Upright Torso</span>
+                                <span class="text-darkCyan">Planned</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-900/50 p-4 rounded-sm">
+                        <h3 class="text-xl font-semibold mb-2">Body Composition</h3>
+                        <p class="text-gray-400 mb-3">Optimizing muscle mass and body fat levels</p>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span>Reach 90kg at 15% Body Fat</span>
+                                <span class="text-darkCyan">Planned</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>Maintain Sub-15% Body Fat Year-Round</span>
+                                <span class="text-darkCyan">Planned</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Resources Section -->
-            <div class="border border-darkCyan rounded-sm p-6">
-                <h2 class="text-2xl font-semibold mb-4">Resources & Tools</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <a href="#" class="block p-4 bg-gray-900/50 rounded-sm hover:bg-gray-900 transition-colors">
-                        <h3 class="font-semibold mb-2">Workout Tracking</h3>
-                        <p class="text-gray-400 text-sm">Apps and methods used for tracking progress</p>
-                    </a>
-                    <a href="#" class="block p-4 bg-gray-900/50 rounded-sm hover:bg-gray-900 transition-colors">
-                        <h3 class="font-semibold mb-2">Nutrition Planning</h3>
-                        <p class="text-gray-400 text-sm">Diet and supplement resources</p>
-                    </a>
-                    <a href="#" class="block p-4 bg-gray-900/50 rounded-sm hover:bg-gray-900 transition-colors">
-                        <h3 class="font-semibold mb-2">Form Guides</h3>
-                        <p class="text-gray-400 text-sm">Exercise technique references</p>
-                    </a>
-                </div>
-            </div>
+
         </section>
     </main>
     
